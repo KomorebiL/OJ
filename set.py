@@ -27,12 +27,36 @@ class Set:
         string = string[:-2] + '}'
         return string
 
+    def __eq__(self, other):
+        if len(other.data) == len(self.data):
+            for s in other.data:
+                bool_ = self.has(s)
+                if bool_ is False:
+                    return False
+            return True
+        else:
+            return False
+
+    def __contains__(self, x):
+        return self.has(x)
+
 
 def test():
-    set_ = Set(1, 2, 2, 3, 3, 4)
-    assert str(set_) == '{1, 2, 3, 4}'
-    set_.remove(2)
-    assert str(set_) == '{1, 3, 4}'
+    a = Set(1, 2, 2, 3, 4, 4)
+    b = Set(1, 2, 2, 3, 4)
+    c = Set(1, 3, 4, 2)
+    d = Set(2, 3)
+    assert (str(a) == '{1, 2, 3, 4}')
+    print(a, b, c, d)
+    assert (a == b)
+    assert (a == c)
+    assert (a != d)
+    assert (1 in a)
+    assert (a.has(1) is True)
+    a.remove(1)
+    assert (a.has(1) is False)
+    a.add(1)
+    assert (a.has(1) is True)
 
 
 if __name__ == '__main__':
