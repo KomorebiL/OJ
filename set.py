@@ -1,35 +1,35 @@
 class Set:
     def __init__(self, *args):
-        self.data = []
+        self.set = []
         for s in args:
             self.add(s)
 
     def remove(self, x):
-        for i, s in enumerate(self.data):
+        for i, s in enumerate(self.set):
             if s is x:
-                self.data = self.data[0: i] + self.data[i + 1:]
+                self.set = self.set[0: i] + self.set[i + 1:]
 
     def add(self, x):
         bool_ = self.has(x)
         if bool_ is False:
-            self.data.append(x)
+            self.set.append(x)
 
     def has(self, x):
-        for s in self.data:
+        for s in self.set:
             if s is x:
                 return True
         return False
 
     def __repr__(self):
         string = '{'
-        for s in self.data:
+        for s in self.set:
             string += '{}, '.format(str(s))
         string = string[:-2] + '}'
         return string
 
     def __eq__(self, other):
-        if len(other.data) == len(self.data):
-            for s in other.data:
+        if len(other.set) == len(self.set):
+            for s in other.set:
                 bool_ = self.has(s)
                 if bool_ is False:
                     return False
