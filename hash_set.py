@@ -1,4 +1,4 @@
-class hash_set:
+class HashSet:
     def __init__(self, *args):
         self.set_size = 10007
         self.set = [None] * self.set_size
