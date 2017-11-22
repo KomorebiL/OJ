@@ -35,10 +35,15 @@ class LinkedList:
 
     def reverse(self):
         # 翻转
-        def f(lt):
-            lt = lt[::-1]
-            return lt
-        return self.op(f)
+        n1 = Node('head')
+        next_ = self.head.next
+        while next_ is not None:
+            temp = Node(next_.element)
+            n1_next = n1.next
+            n1.next = temp
+            temp.next = n1_next
+            next_ = next_.next
+        self.head = n1
 
     def sort(self):
         # 排序
@@ -83,6 +88,7 @@ def test_reverse():
     l.append(222)
     l.append(333)
     l.reverse()
+    print(l)
     assert str(l) == 'head > 333 > 222 > 111 > '
 
 
